@@ -448,6 +448,31 @@ body,
 }
 
 /* ─────────────────────────────────────────
+   COMPONENT ANIMATIONS
+───────────────────────────────────────── */
+
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.terminal-cursor {
+  color: rgba(255, 255, 255, 0.65);
+  animation: terminal-blink 1s step-end infinite;
+}
+
+@keyframes radial-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ─────────────────────────────────────────
    GRAIN (textura sutil)
 ───────────────────────────────────────── */
 .gallery-grain {
