@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# Crafts
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Coleção de componentes interativos e design systems construídos como laboratório criativo.
 
-Currently, two official plugins are available:
+Cada entrada explora um padrão diferente de UI — desde micro-interações e animações até sistemas de design com tokens e documentação. O objetivo é experimentar, refinar e manter uma referência visual do que é possível construir com React.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Demo:** em breve
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the ESLint configuration
+| Camada | Tecnologia |
+|---|---|
+| Framework | React 19 + TypeScript |
+| Build | Vite 8 |
+| Styling | Tailwind CSS v4 |
+| Roteamento | React Router v7 |
+| Estado | Zustand |
+| Ícones | Lucide React |
+| Syntax highlight | Shiki |
+| Primitivos UI | Radix UI · Base UI |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Estrutura
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/     # Componentes isolados por feature
+│   ├── ui/         # Elementos base compartilhados (Header, Footer)
+│   └── [feature]/  # Sub-componentes de cada projeto
+├── pages/          # Uma página por projeto
+├── routes/         # Configuração do React Router
+├── data/           # Dados estáticos (registro de componentes)
+└── styles/         # CSS global e tokens
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+O projeto tem duas categorias de entradas, cada uma com sua convenção:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Components** — componentes interativos isolados:
 ```
+src/components/[nome]/   → sub-componentes isolados e reutilizáveis
+src/pages/[Nome].tsx     → página que centraliza o componente
+src/routes/index.tsx     → rota /components/[nome] registrada
+src/data/components.ts   → entrada na galeria
+```
+
+**Design Systems** — sistemas de design documentados com tokens, tipografia e componentes:
+```
+src/components/[nome]/   → componentes do design system
+src/pages/[Nome].tsx     → página de documentação
+src/routes/index.tsx     → rota /designsystem/[nome] registrada
+```
+
+## Rodando localmente
+
+```bash
+# Instalar dependências
+npm install
+
+# Dev server (porta 3000)
+npm run dev
+
+# Type-check + build de produção
+npm run build
+
+# Preview do build
+npm run preview
+```
+
+## Licença
+
+MIT — veja [LICENSE](./LICENSE).
